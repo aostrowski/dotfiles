@@ -1,7 +1,9 @@
 function! CreateDirIfNeeded(dir)
-  if !isdirectory(a:dir)
+  let needed = !isdirectory(a:dir)
+  if needed
     call system('mkdir ' . a:dir)
   endif
+  return needed
 endfunction
 
 
@@ -10,14 +12,26 @@ if has("win32")
  source $VIMRUNTIME/vimrc_example.vim
 endif
 
+let vimdir = '$HOME/.vim'
+let &runtimepath.=','.vimdir
 
 "Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+let vundledir = expand(vimdir . '/bundle/vundle/')
+let installVundle = CreateDirIfNeeded(vundledir)
+if installVundle
+  echo "Installing Vundle"
+  call system('git clone https://github.com/gmarik/vundle ' . vundledir)
+endif
+let &runtimepath.=','.vundledir
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
+if installVundle > 0
+  echo "Installing Vundle Bundles"
+  :BundleInstall
+endif
 filetype plugin indent on
 
 behave xterm
@@ -28,9 +42,6 @@ set shiftwidth=4
 set expandtab
 colors darkblue
 set background=dark 
-
-let vimdir = '$HOME/.vim'
-let &runtimepath.=','.vimdir
 
 "backup
 set nobackup
@@ -59,7 +70,7 @@ set spelllang=en
 if has("win32") 
     set clipboard=unnamed
     set guifont=Consolas:h9:cEASTEUROPE
-    set encoding=cp1250 "utf-8
+    set encoding=cp1250 "the displayed encoding
 else
     set clipboard=unnamedplus
     set encoding=utf-8
