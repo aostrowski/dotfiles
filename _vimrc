@@ -28,6 +28,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
+Bundle 'jistr/vim-nerdtree-tabs'
+
 if installVundle > 0
   echo "Installing Vundle Bundles"
   :BundleInstall
@@ -75,3 +77,6 @@ else
     set clipboard=unnamedplus
     set encoding=utf-8
 endif
+
+"nerdtree(tabs) improvements
+let g:nerdtree_tabs_open_on_console_startup=1
