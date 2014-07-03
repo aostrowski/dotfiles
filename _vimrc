@@ -65,6 +65,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set ignorecase
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set backspace=indent,eol,start
 au BufRead,BufNewFile *.txt set filetype=plaintext
 "au FileType plaintext setlocal spelllang=en spell
 set spelllang=en
