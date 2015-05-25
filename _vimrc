@@ -29,6 +29,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'https://github.com/neilagabriel/vim-geeknote'
 
 if installVundle > 0
   echo "Installing Vundle Bundles"
