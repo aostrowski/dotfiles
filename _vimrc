@@ -27,9 +27,11 @@ let &runtimepath.=','.vundledir
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'https://github.com/scrooloose/nerdtree.git'
+Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'https://github.com/neilagabriel/vim-geeknote'
+Bundle 'neilagabriel/vim-geeknote'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'dkarter/bullets.vim'
 
 if installVundle > 0
   echo "Installing Vundle Bundles"
