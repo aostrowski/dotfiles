@@ -33,6 +33,8 @@ Bundle 'neilagabriel/vim-geeknote'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'dkarter/bullets.vim'
 
+Bundle 'Valloric/YouCompleteMe'
+
 if installVundle > 0
   echo "Installing Vundle Bundles"
   :BundleInstall
@@ -45,8 +47,8 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-colors darkblue
-set background=dark 
+set background=dark
+colorscheme solarized
 
 "backup
 set nobackup
@@ -64,6 +66,7 @@ if has('persistent_undo')
     set undofile "save undofile on file close
 endif
 
+set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set ignorecase
@@ -75,12 +78,14 @@ set spelllang=en
 
 if has("win32") 
     set clipboard=unnamed
-    set guifont=Consolas:h9:cEASTEUROPE
-    set encoding=cp1250 "the displayed encoding
+    set guifont=Consolas:h11:cEASTEUROPE
 else
     set clipboard=unnamedplus
-    set encoding=utf-8
 endif
 
 "nerdtree(tabs) improvements
 let g:nerdtree_tabs_open_on_console_startup=1
+
+let g:ycm_compilation_database_folder = 'build'
+let g:ycm_global_ycm_extra_conf = 'c:/Users/adrian/src/dotfiles/_vim/ycm_global_extra_conf.py'
+let g:ycm_extra_conf_vim_data = [ 'g:ycm_compilation_database_folder' ]
